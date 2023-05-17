@@ -5,26 +5,54 @@ import HelloWorld from './components/HelloWorld.vue'
 
 <template>
   <header>
-    
-
+    <nav class="mobile-menu">
+      <RouterLink to="/"><img class="nav-icon" src="./assets/menu.png"/></RouterLink>
+    </nav>
     <div class="wrapper">
-      <img alt="Vue logo" class="logo" src="https://i.ibb.co/jGfSQX4/logo-no-background.png" width="125" height="" />
-      <HelloWorld />
-
-      <nav>
+      <!-- <img alt="Vue logo" class="logo" src="https://i.ibb.co/jGfSQX4/logo-no-background.png" width="125" height="" /> -->
+      <!-- <h1>NEWSFLASH</h1>
+      <HelloWorld /> -->
+      <nav class="desktop-nav">
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
       </nav>
     </div>
   </header>
 
+  <nav class="mobile-nav">
+    <RouterLink to="/"><img class="nav-icon" src="./assets/home.png"/></RouterLink>
+    <RouterLink to="/"><img class="nav-icon" src="./assets/discover.png"/></RouterLink>
+    <RouterLink to="/about"><img class="nav-icon" src="./assets/profile.png"/></RouterLink>
+  </nav>
+
   <RouterView />
 </template>
 
 <style scoped>
+.nav-icon{
+  /* height:16px; */
+  width:16px;
+  
+}
 header {
   line-height: 1.5;
   max-height: 100vh;
+}
+
+.mobile-nav {
+  background-color: var(--color-background-soft);
+  z-index: 1;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display:flex;
+  justify-content: space-around;
+}
+
+.mobile-menu {
+  margin-top:0px;
+  
 }
 
 .logo {
@@ -33,10 +61,10 @@ header {
 }
 
 nav {
-  width: 100%;
   font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
+  text-align: start;
+  /* margin-top: 2rem; */
+  padding:8px 0 8px 0;
 }
 
 nav a.router-link-exact-active {
@@ -49,15 +77,26 @@ nav a.router-link-exact-active:hover {
 
 nav a {
   display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
+  /* padding: 0 1rem; */
+  /* border-left: 1px solid var(--color-border); */
 }
 
 nav a:first-of-type {
   border: 0;
 }
 
+@media (max-width: 767px) {
+  .desktop-nav {
+    display: none;
+    /* or any other style rules */
+  }
+}
+
 @media (min-width: 1024px) {
+  .desktop-nav {
+    display: block
+  }
+
   header {
     display: flex;
     place-items: center;
